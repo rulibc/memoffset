@@ -15,7 +15,14 @@ autocfg = "1"
 [dev-dependencies]
 doc-comment = "0.3"
 
+[dependencies]
+compiler_builtins = {version = "0.1", optional = true}
+core = {version = "1.0", optional = true, package = "rustc-std-workspace-core"}
+alloc = {version = "1.0", optional = true, package = "rustc-std-workspace-alloc"}
+
 [features]
+# Unstable feature to support being a libstd dependency
+rustc-dep-of-std = ["compiler_builtins", "core", "alloc"]
 default = []
 unstable_const = []
 unstable_raw = []
